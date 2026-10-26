@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: risk_raw
+    database: RISK_DEMO
+    schema: RAW
+    tables:
+      - name: loans
+        description: "Loan records loaded from CSV files."

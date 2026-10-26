@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: stg_loans
+    description: "Cleaned loan records at loan and reporting-date grain."
+
+    columns:
+      - name: loan_id
+        data_tests:
+          - not_null
+
+      - name: customer_id
+        data_tests:
+          - not_null
+
+      - name: reporting_date
+        data_tests:
+          - not_null
+
+      - name: portfolio
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['CORPORATE', 'RETAIL']
+
+      - name: currency
+        data_tests:
+          - not_null
+
+      - name: exposure_amount
+        data_tests:
+          - not_null
+
+      - name: pd
+        data_tests:
+          - not_null
+
+      - name: lgd
+        data_tests:
+          - not_null
+
+  - name: int_loan_risk
+    description: "Loan-level simplified expected-loss calculation."
+
+    columns:
+      - name: expected_loss
+        data_tests:
+          - not_null
+
+  - name: mart_portfolio_risk
+    description: "Risk totals by reporting date, portfolio and currency."
